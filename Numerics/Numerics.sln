@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numerics", "Numerics\Numerics.csproj", "{8436F928-5AA3-4839-B6A1-7E2ED76F4EBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{142829BF-945B-4AF6-A08C-6409CC3E4BAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8436F928-5AA3-4839-B6A1-7E2ED76F4EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8436F928-5AA3-4839-B6A1-7E2ED76F4EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8436F928-5AA3-4839-B6A1-7E2ED76F4EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8436F928-5AA3-4839-B6A1-7E2ED76F4EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{142829BF-945B-4AF6-A08C-6409CC3E4BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{142829BF-945B-4AF6-A08C-6409CC3E4BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{142829BF-945B-4AF6-A08C-6409CC3E4BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{142829BF-945B-4AF6-A08C-6409CC3E4BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73F212C8-C6ED-428C-AE64-BE8BA64652EF}
+	EndGlobalSection
+EndGlobal

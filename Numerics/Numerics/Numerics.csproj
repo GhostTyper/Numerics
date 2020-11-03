@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>SharpFast.Numerics</RootNamespace>
+    <AssemblyName>SharpFast.Numerics</AssemblyName>
+  </PropertyGroup>
+
+</Project>
