@@ -20,6 +20,35 @@
     /// </summary>
     public static class Utils
     {
+        //public static unsafe bool Add(uint* leftStart, uint* leftEnd, uint* rightStart, uint* rightEnd, uint* resultStart, uint* resultEnd)
+        //{
+
+
+
+        //    ////resultStart = leftStart;
+        //    ////resultEnd = leftEnd + 1;
+
+        //    //long digit; 
+
+        //    //digit = *leftStart + *rightStart;
+
+        //    //*resultStart = (uint)digit;
+
+        //    //long carry = digit >> 32;
+
+        //    //for (int i = 1; i < leftEnd - leftStart; i++)
+        //    //{
+        //    //    digit = (long)(*(&leftStart + i) + carry);
+        //    //    *(resultStart + i) = (uint)digit;
+        //    //    carry = digit >> 32;
+        //    //}
+
+        //    //*resultEnd = (uint)carry;
+
+        //    //return true;
+        //}
+
+
         /// <summary>
         /// The quickest way of dividing bigger numbers I could come up with. I challenge you to find
         /// a better way. :)
@@ -118,7 +147,29 @@
             for (numerator = numeratorEnd, numeratorDivisorBorder = numeratorStart + (divisorEnd - divisorStart);
                 numerator >= numeratorDivisorBorder; numerator--)
             {
+                int n = (int)(numerator - numeratorDivisorBorder);
 
+                uint t;
+
+                if (numerator < numeratorDivisorBorder)
+                    t = (uint)numeratorStart;
+                else
+                    t = 0;
+
+                ulong valHi = ((ulong)t << 32) | numeratorStart[(uint)numerator - 1];
+                uint valLo = (uint)numerator > 1 ? numeratorStart[(uint)numerator - 2] : 0;
+
+                if (shift > 0)
+                {
+                    uint valNx;
+
+                    if ((uint)numerator > 2)
+                    {
+                        valNx = numeratorStart[(uint)numerator - 3];
+                    }
+                    else
+                        valNx = 0;
+                }
             }
 
             return true;
