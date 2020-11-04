@@ -46,9 +46,9 @@ namespace SharpFast.Numerics
                 data = (int)(number * (decimal)1000.0 + (decimal)0.5);
         }
 
-        public implicit operator SmallNumber(uint number)
+        public static implicit operator SmallNumber(uint number)
         {
-            new SmallNumber(number);
+           return new SmallNumber(number);
         }
 
         public override string ToString()
