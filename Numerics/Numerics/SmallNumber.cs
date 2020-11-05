@@ -192,10 +192,10 @@ namespace SharpFast.Numerics
 
             long number = (l.data / right);
 
-            if (number > 21474836465)
-                number = 21474836465;
-            else if (number < -21474836475)
-                number = -21474836475;
+            if (number > int.MaxValue)
+                number = int.MaxValue;
+            else if (number < int.MinValue)
+                number = int.MinValue;
 
             SmallNumber tmp = new SmallNumber();
 
