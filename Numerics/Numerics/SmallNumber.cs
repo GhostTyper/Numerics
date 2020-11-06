@@ -7,6 +7,13 @@ namespace SharpFast.Numerics
     public struct SmallNumber
     {
         private int data;
+        public bool IsPositiveOverflow => data == int.MaxValue;
+
+        public bool IsNegativeOverflow => data == int.MinValue;
+
+        public static SmallNumber MaxValue => new SmallNumber(int.MaxValue - 0.001);
+
+        public static SmallNumber MinValue => new SmallNumber(int.MinValue - 0.001);
 
         public SmallNumber(byte number)
         {
@@ -90,9 +97,21 @@ namespace SharpFast.Numerics
         }
 
 
+
         public static implicit operator SmallNumber(byte number)
         {
             return new SmallNumber(number);
+        }
+
+        public static explicit operator byte(SmallNumber number)
+        {
+            if (number > byte.MaxValue)
+                return byte.MaxValue;
+
+            if (number < byte.MinValue)
+                return byte.MinValue;
+
+            return (byte)number;
         }
 
         public static implicit operator SmallNumber(char number)
@@ -100,9 +119,31 @@ namespace SharpFast.Numerics
             return new SmallNumber(number);
         }
 
+        public static explicit operator char(SmallNumber number)
+        {
+            if (number > char.MaxValue)
+                return char.MaxValue;
+
+            if (number < char.MinValue)
+                return char.MinValue;
+
+            return (char)number;
+        }
+
         public static implicit operator SmallNumber(short number)
         {
             return new SmallNumber(number);
+        }
+
+        public static explicit operator short(SmallNumber number)
+        {
+            if (number > short.MaxValue)
+                return short.MaxValue;
+
+            if (number < short.MinValue)
+                return short.MinValue;
+
+            return (short)number;
         }
 
         public static implicit operator SmallNumber(uint number)
@@ -115,9 +156,19 @@ namespace SharpFast.Numerics
             return new SmallNumber(number);
         }
 
+        public static implicit operator long(SmallNumber number)
+        {
+            return number;
+        }
+
         public static explicit operator SmallNumber(ulong number)
         {
             return new SmallNumber(number);
+        }
+
+        public static implicit operator ulong(SmallNumber number)
+        {
+            return number;
         }
 
         public static explicit operator SmallNumber(float number)
@@ -125,14 +176,29 @@ namespace SharpFast.Numerics
             return new SmallNumber(number);
         }
 
+        public static implicit operator float(SmallNumber number)
+        {
+            return number;
+        }
+
         public static explicit operator SmallNumber(double number)
         {
             return new SmallNumber(number);
         }
 
+        public static implicit operator double(SmallNumber number)
+        {
+            return number;
+        }
+
         public static explicit operator SmallNumber(decimal number)
         {
             return new SmallNumber(number);
+        }
+
+        public static implicit operator decimal(SmallNumber number)
+        {
+            return number;
         }
 
         public static SmallNumber operator+ (SmallNumber l, SmallNumber r)
@@ -188,6 +254,12 @@ namespace SharpFast.Numerics
 
         public static SmallNumber operator /(SmallNumber l, SmallNumber r)
         {
+            if (r.data < 1000)
+            {
+                r.data *= 1000;
+                l.data *= 1000;
+            }
+
             long right = r.data / 1000;
 
             long number = (l.data / right);

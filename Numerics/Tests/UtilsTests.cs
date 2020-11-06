@@ -31,6 +31,72 @@ namespace Tests
         public unsafe void SmallNumberTests()
         {
             {
+                byte a = 5;
+                SmallNumber b = a;
+
+                Assert.IsTrue(b == new SmallNumber(5));
+
+                char c = (char)5;
+                b = c;
+
+                Assert.IsTrue(b == new SmallNumber(5));
+
+                short d = 5;
+                b = d;
+
+                Assert.IsTrue(b == new SmallNumber(5));
+
+                uint e = 5;
+                b = e;
+                
+                Assert.IsTrue(b == new SmallNumber(5));
+
+                float f = 5.3f;
+                b = (SmallNumber)f;
+
+                Assert.IsTrue(b == new SmallNumber(5.3f));
+
+                double g = 5.3;
+                b = (SmallNumber)g;
+
+                Assert.IsTrue(b == new SmallNumber(5.3));
+
+                decimal h = (decimal)5.3;
+                b = (SmallNumber)h;
+
+                Assert.IsTrue(b == new SmallNumber((decimal)5.3));
+            }
+
+            {
+                SmallNumber a = new SmallNumber(long.MaxValue);
+
+                Assert.IsTrue(a.IsPositiveOverflow);
+
+                a = new SmallNumber(long.MinValue);
+
+                Assert.IsTrue(a.IsNegativeOverflow);
+
+            }
+
+            {
+                SmallNumber b = byte.MaxValue;
+
+                Assert.IsTrue(b == new SmallNumber(byte.MaxValue));
+
+                b = char.MaxValue;
+
+                Assert.IsTrue(b == new SmallNumber(char.MaxValue));
+
+                b = short.MaxValue;
+
+                Assert.IsTrue(b == new SmallNumber(short.MaxValue));
+
+                b = uint.MaxValue;
+
+                Assert.IsTrue(b == new SmallNumber(uint.MaxValue));
+            }
+
+            {
                 SmallNumber a = new SmallNumber(6);
                 SmallNumber b = new SmallNumber(5);
 
@@ -76,6 +142,34 @@ namespace Tests
                 SmallNumber resultMult = a * b;
 
                 Assert.IsTrue(resultMult == new SmallNumber(int.MaxValue));
+
+                Assert.IsFalse(a == b);
+                Assert.IsTrue(a != b);
+
+                Assert.IsFalse(a < b);
+                Assert.IsTrue(a > b);
+            }
+
+
+            {
+                SmallNumber a = new SmallNumber(0.006);
+                SmallNumber b = new SmallNumber(0.005);
+
+                SmallNumber resultAdd = a + b;
+
+                Assert.IsTrue(resultAdd == new SmallNumber(0.011));
+
+                SmallNumber resultSub = a - b;
+
+                Assert.IsTrue(resultSub == new SmallNumber(0.001));
+
+                SmallNumber resultDiv = a / b;
+
+                Assert.IsTrue(resultDiv == new SmallNumber(1.2));
+
+                SmallNumber resultMult = a * b;
+
+                Assert.IsTrue(resultMult == new SmallNumber(0.00003));
 
                 Assert.IsFalse(a == b);
                 Assert.IsTrue(a != b);
