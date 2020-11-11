@@ -97,7 +97,6 @@ namespace SharpFast.Numerics
         }
 
 
-
         public static implicit operator SmallNumber(byte number)
         {
             return new SmallNumber(number);
@@ -146,9 +145,19 @@ namespace SharpFast.Numerics
             return (short)number;
         }
 
+        public static implicit operator SmallNumber(int number)
+        {
+            return new SmallNumber(number);
+        }
+
+        public static implicit operator int(SmallNumber number)
+        {
+            return number;
+        }
+
         public static implicit operator SmallNumber(uint number)
         {
-           return new SmallNumber(number);
+            return new SmallNumber(number);
         }
 
         public static explicit operator SmallNumber(long number)
@@ -201,7 +210,8 @@ namespace SharpFast.Numerics
             return number;
         }
 
-        public static SmallNumber operator+ (SmallNumber l, SmallNumber r)
+
+        public static SmallNumber operator +(SmallNumber l, SmallNumber r)
         {
             SmallNumber tmp;
 
@@ -219,7 +229,7 @@ namespace SharpFast.Numerics
             return tmp;
         }
 
-        public static SmallNumber operator- (SmallNumber l, SmallNumber r)
+        public static SmallNumber operator -(SmallNumber l, SmallNumber r)
         {
             long number = (long)l.data - r.data;
 
@@ -235,7 +245,7 @@ namespace SharpFast.Numerics
             return tmp;
         }
 
-        public static SmallNumber operator* (SmallNumber l, SmallNumber r)
+        public static SmallNumber operator *(SmallNumber l, SmallNumber r)
         {
             long number = ((long)l.data * r.data) / 1000;
 
@@ -309,7 +319,7 @@ namespace SharpFast.Numerics
         public static SmallNumber operator %(SmallNumber l, SmallNumber r)
         {
             SmallNumber tmp = new SmallNumber();
-                
+
             tmp.data = l.data % r.data;
 
             return tmp;
